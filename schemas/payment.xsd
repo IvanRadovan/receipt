@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://www.receipts.se/schema"
+           xmlns:tns="https://www.receipts.se/schema"
+           elementFormDefault="qualified">
+
+    <xs:include schemaLocation="common.xsd"/>
+
+    <xs:group name="PaymentChoice">
+        <xs:choice>
+            <xs:sequence>
+                <xs:element ref="tns:PaymentCash"/>
+                <xs:element ref="tns:PaymentCard" minOccurs="0"/>
+            </xs:sequence>
+            <xs:element ref="tns:PaymentCard"/>
+        </xs:choice>
+    </xs:group>
+
+    <xs:element name="PaymentCash">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="RoundingAdjustment" type="tns:AmountType" minOccurs="0"/>
+                <xs:element name="AmountDue" type="tns:PositiveAmountType" minOccurs="0"/>
+                <xs:element name="CashReceived" type="tns:PositiveAmountType" minOccurs="0"/>
+                <xs:element name="ChangeGiven" type="tns:PositiveAmountType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="PaymentCard">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="TransactionInterchange">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="POIData" type="tns:POIDataType"/>
+                            <xs:element name="PaymentResult" type="tns:PaymentResultType"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="OutputContent" type="tns:OutputContentType" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="POIDataType">
+        <xs:sequence>
+            <xs:element name="POITransactionID">
+                <xs:complexType>
+                    <xs:attribute name="TransactionID" type="tns:HexType"/>
+                    <xs:attribute name="TimeStamp" type="xs:dateTime" use="required"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PaymentResultType">
+        <xs:sequence>
+            <xs:element name="PaymentInstrumentData" type="tns:PaymentInstrumentDataType"/>
+            <xs:element name="AmountData">
+                <xs:complexType>
+                    <xs:attribute name="AuthorizedAmount" type="tns:PositiveAmountType" use="required"/>
+                    <xs:attribute name="CashBackAmount" type="tns:PositiveAmountType"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PaymentAcquirerData" type="tns:PaymentAcquirerDataType"/>
+        </xs:sequence>
+        <xs:attribute name="PaymentType" use="required">
+            <xs:simpleType>
+                <xs:restriction base="tns:LabelType">
+                    <xs:enumeration value="Normal"/>
+                    <xs:enumeration value="Refund"/>
+                    <xs:enumeration value="SplitTender"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="PaymentInstrumentDataType">
+        <xs:sequence>
+            <xs:element name="CardData" type="tns:CardDataType" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="PaymentInstrumentType" use="required">
+            <xs:simpleType>
+                <xs:restriction base="tns:LabelType">
+                    <xs:enumeration value="Card"/>
+                    <xs:enumeration value="Mobile"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="CardDataType">
+        <xs:sequence>
+            <xs:element name="CVMResult" type="tns:CVMResultType"/>
+            <xs:element name="EMVData" type="tns:EMVDataType"/>
+        </xs:sequence>
+        <xs:attribute name="PaymentBrand" type="tns:LabelType" use="required"/>
+        <xs:attribute name="MaskedPAN" type="tns:MaskedPANType" use="required"/>
+        <xs:attribute name="EntryMode" type="tns:EntryModeType"/>
+    </xs:complexType>
+
+    <xs:complexType name="CVMResultType">
+        <xs:attribute name="CVMType" use="required">
+            <xs:simpleType>
+                <xs:restriction base="tns:LabelType">
+                    <xs:enumeration value="PIN"/>
+                    <xs:enumeration value="Signature"/>
+                    <xs:enumeration value="Exempt"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="EMVDataType">
+        <xs:attribute name="AID" type="tns:HexType" use="required"/>
+        <xs:attribute name="TVR" use="required">
+            <xs:simpleType>
+                <xs:restriction base="tns:HexType">
+                    <xs:length value="10"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="TSI" use="required">
+            <xs:simpleType>
+                <xs:restriction base="tns:HexType">
+                    <xs:length value="4"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="MaskedPANType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\*{12}[0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="EntryModeType">
+        <xs:restriction base="tns:LabelType">
+            <xs:enumeration value="ICC"/>
+            <xs:enumeration value="Contactless"/>
+            <xs:enumeration value="Magstripe"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="PaymentAcquirerDataType">
+        <xs:sequence>
+            <xs:element name="PaymentAuthorisationData">
+                <xs:complexType>
+                    <xs:attribute name="TransactionSource" type="tns:LabelType"/>
+                    <xs:attribute name="AuthorisationChannel" type="tns:NumericType"/>
+                    <xs:attribute name="AuthorisationResponder" type="tns:NumericType"/>
+                    <xs:attribute name="TransactionType" type="tns:NumericType"/>
+                    <xs:attribute name="FinancialInstitution" type="tns:LabelType"/>
+                    <xs:attribute name="ApprovalCode" type="tns:NumericType" use="required"/>
+                    <xs:attribute name="ARC" type="tns:NumericType"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="MerchantID" type="tns:NumericType"/>
+        <xs:attribute name="RRN" type="tns:NumericType"/>
+        <xs:attribute name="POIUnitID" type="tns:NumericType" use="required"/>
+        <xs:attribute name="AcquirerPOIID" type="tns:NumericType"/>
+    </xs:complexType>
+
+    <xs:complexType name="OutputContentType">
+        <xs:sequence>
+            <xs:element name="OutputText">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:maxLength value="256"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="OutputFormat" type="tns:LabelType" use="required" fixed="Text"/>
+    </xs:complexType>
+
+</xs:schema>

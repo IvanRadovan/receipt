@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Receipt xmlns="https://www.receipts.se/schema"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://www.receipts.se/schema ../schemas/receipt.xsd"
+         Version="1.0"
+         Language="sv-SE"
+         Country="SE">
+    <MerchantData OrganizationNumber="556712-8508">
+        <MerchantName>MATBODEN EKTORP C</MerchantName>
+        <Location>
+            <Address StreetName="EKTORPSVÄGEN" StreetNumber="4" PostalCode="131 47" City="NACKA"/>
+        </Location>
+        <Contact>
+            <Phone Uri="tel:+4687161380">08-716 13 80</Phone>
+        </Contact>
+    </MerchantData>
+    <SaleTransaction Currency="SEK" TimeStamp="2018-08-12T18:42:19+02:00">
+        <SaleIdentificationData>
+            <POSData TerminalID="003" RunNumber="16169" TransactionNumber="601559"/>
+            <Operator CashierID="121" CashierAlias="Andreas"/>
+            <TaxAgencyData ControlUnitID="RIHTT100710002986"/>
+        </SaleIdentificationData>
+        <Order>
+            <Items>
+                <Item LineNo="1">
+                    <Description>RUSH ANANAS</Description>
+                    <Pricing>
+                        <UnitPrice>13.95</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>13.95</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>1.49</TaxAmount>
+                            <NetAmount>12.46</NetAmount>
+                            <GrossAmount>13.95</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="2" Type="Deposit" RelatedLineNo="1">
+                    <Description>+ PANT</Description>
+                    <Pricing>
+                        <UnitPrice>1.00</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>1.00</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>0.12</TaxAmount>
+                            <NetAmount>0.88</NetAmount>
+                            <GrossAmount>1.00</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="3">
+                    <Description>DIGESTIVE EKO</Description>
+                    <Pricing>
+                        <UnitPrice>25.95</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>25.95</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>2.78</TaxAmount>
+                            <NetAmount>23.17</NetAmount>
+                            <GrossAmount>25.95</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="4">
+                    <Description>RAMLÖSA CITRUS</Description>
+                    <Pricing>
+                        <UnitPrice>12.95</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>12.95</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>1.39</TaxAmount>
+                            <NetAmount>11.56</NetAmount>
+                            <GrossAmount>12.95</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="5" Type="Deposit" RelatedLineNo="4">
+                    <Description>+ PANT</Description>
+                    <Pricing>
+                        <UnitPrice>1.00</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>1.00</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>0.12</TaxAmount>
+                            <NetAmount>0.88</NetAmount>
+                            <GrossAmount>1.00</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="6">
+                    <Description>RED DEVIL</Description>
+                    <Pricing>
+                        <UnitPrice>14.95</UnitPrice>
+                        <CountQuantity>4</CountQuantity>
+                    </Pricing>
+                    <Discounts>
+                        <Discount Type="Bundle" Basis="Item" Description="Ölkorv 3 för 39:-">
+                            <Value Mode="Amount">5.85</Value>
+                        </Discount>
+                    </Discounts>
+                    <LineTotals>
+                        <BaseAmount>59.80</BaseAmount>
+                        <DiscountAmount>5.85</DiscountAmount>
+                        <GrossAmount>53.95</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>5.78</TaxAmount>
+                            <NetAmount>48.17</NetAmount>
+                            <GrossAmount>53.95</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+            </Items>
+            <TransactionSummary>
+                <ItemCount>7</ItemCount>
+                <Totals>
+                    <BaseAmount>114.65</BaseAmount>
+                    <DiscountAmount>5.85</DiscountAmount>
+                    <GrossAmount>108.80</GrossAmount>
+                </Totals>
+                <VATSummary>
+                    <VAT Rate="12.00">
+                        <TaxAmount>11.66</TaxAmount>
+                        <NetAmount>97.14</NetAmount>
+                        <GrossAmount>108.80</GrossAmount>
+                    </VAT>
+                </VATSummary>
+            </TransactionSummary>
+        </Order>
+        <Tenders>
+            <PaymentCard>
+                <TransactionInterchange>
+                    <POIData>
+                        <POITransactionID TimeStamp="2018-08-12T18:42:22+02:00"/>
+                    </POIData>
+                    <PaymentResult PaymentType="Normal">
+                        <PaymentInstrumentData PaymentInstrumentType="Card">
+                            <CardData PaymentBrand="Debit Mastercard" MaskedPAN="************3777">
+                                <CVMResult CVMType="PIN"/>
+                                <EMVData AID="A0000000041010" TVR="0000001000" TSI="E800"/>
+                            </CardData>
+                        </PaymentInstrumentData>
+                        <AmountData AuthorizedAmount="108.80"/>
+                        <PaymentAcquirerData MerchantID="715219" RRN="612031901527" POIUnitID="3" AcquirerPOIID="61203190">
+                            <PaymentAuthorisationData
+                                    TransactionSource="Ca"
+                                    AuthorisationChannel="1"
+                                    AuthorisationResponder="7"
+                                    TransactionType="000"
+                                    FinancialInstitution="SWE"
+                                    ApprovalCode="831334"/>
+                        </PaymentAcquirerData>
+                    </PaymentResult>
+                </TransactionInterchange>
+                <OutputContent OutputFormat="Text">
+                    <OutputText>BELOPP GODKÄNT AV KUND&#10;SPARA KVITTOT, KUNDENS EXEMPLAR</OutputText>
+                </OutputContent>
+            </PaymentCard>
+        </Tenders>
+    </SaleTransaction>
+    <ClosingNote>
+        <MessageArea>
+            <TextLine Style="Bold">Öppettider:</TextLine>
+            <TextLine Style="Bold">Mån-Lör 8-21</TextLine>
+            <TextLine Style="Bold">Sön 8-20</TextLine>
+            <TextLine Style="Bold">Tack och välkommen åter!</TextLine>
+        </MessageArea>
+    </ClosingNote>
+</Receipt>

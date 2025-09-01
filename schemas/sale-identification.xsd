@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://www.receipts.se/schema"
+           xmlns:tns="https://www.receipts.se/schema"
+           elementFormDefault="qualified">
+
+    <xs:include schemaLocation="common.xsd"/>
+
+    <xs:simpleType name="CurrencyEnum">
+        <xs:restriction base="tns:LabelType">
+            <xs:enumeration value="SEK"/>
+            <xs:enumeration value="NOK"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="POSDataType">
+        <xs:attribute name="TerminalID" type="tns:NumericType" use="required"/>
+        <xs:attribute name="StoreID" type="tns:NumericType"/>
+        <xs:attribute name="RunNumber" type="tns:NumericType"/>
+        <xs:attribute name="TransactionNumber" type="tns:NumericType"/>
+    </xs:complexType>
+
+    <xs:complexType name="OperatorType">
+        <xs:attribute name="CashierID" type="tns:NumericType"/>
+        <xs:attribute name="CashierAlias" type="tns:LabelType" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="TaxAgencyDataType">
+        <xs:attribute name="ControlUnitID" type="tns:LabelType" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

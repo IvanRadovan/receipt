@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Receipt xmlns="https://www.receipts.se/schema"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://www.receipts.se/schema ../schemas/receipt.xsd"
+         Version="1.0"
+         Language="sv-SE"
+         Country="SE">
+    <MerchantData OrganizationNumber="969743-1519">
+        <Branding>
+            <MerchantLogo Src="https://www.tempo.se/logo.png"/>
+            <MessageArea>
+                <TextLine>ÖPPET FÖR DIG!</TextLine>
+                <TextLine>ALLA DAGAR</TextLine>
+                <TextLine>9-20</TextLine>
+            </MessageArea>
+        </Branding>
+        <Location>
+            <DisplayName>Jarlaberg Nacka</DisplayName>
+        </Location>
+        <Contact>
+            <Phone Uri="tel:+4687184666">08-718 46 66</Phone>
+            <Fax Uri="fax:+4687184666">08-718 46 66</Fax>
+        </Contact>
+    </MerchantData>
+    <SaleTransaction Currency="SEK" TimeStamp="2018-08-11T15:14:00+02:00">
+        <SaleIdentificationData>
+            <POSData TerminalID="1" StoreID="186"/>
+            <Operator CashierAlias="Dashti"/>
+        </SaleIdentificationData>
+        <Order>
+            <Items>
+                <Item LineNo="1">
+                    <Description>MJÖLK EKOLOGISK 3%</Description>
+                    <Pricing>
+                        <UnitPrice>14.95</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>14.95</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>1.60</TaxAmount>
+                            <NetAmount>13.35</NetAmount>
+                            <GrossAmount>14.95</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+            </Items>
+            <TransactionSummary>
+                <ItemCount>1</ItemCount>
+                <Totals>
+                    <GrossAmount>14.95</GrossAmount>
+                </Totals>
+                <VATSummary>
+                    <VAT Rate="12.00">
+                        <TaxAmount>1.60</TaxAmount>
+                        <NetAmount>13.35</NetAmount>
+                        <GrossAmount>14.95</GrossAmount>
+                    </VAT>
+                </VATSummary>
+            </TransactionSummary>
+        </Order>
+        <Tenders>
+            <PaymentCard>
+                <TransactionInterchange>
+                    <POIData>
+                        <POITransactionID TimeStamp="2018-08-11T15:12:27+02:00"/>
+                    </POIData>
+                    <PaymentResult PaymentType="Normal">
+                        <PaymentInstrumentData PaymentInstrumentType="Card">
+                            <CardData PaymentBrand="Debit Mastercard" MaskedPAN="************3777">
+                                <CVMResult CVMType="PIN"/>
+                                <EMVData AID="A0000000041010" TVR="0000001000" TSI="6800"/>
+                            </CardData>
+                        </PaymentInstrumentData>
+                        <AmountData AuthorizedAmount="14.95"/>
+                        <PaymentAcquirerData MerchantID="532697" RRN="000040983429" POIUnitID="1" AcquirerPOIID="00004098">
+                            <PaymentAuthorisationData
+                                    TransactionSource="Ca"
+                                    AuthorisationChannel="1"
+                                    AuthorisationResponder="6"
+                                    TransactionType="000"
+                                    FinancialInstitution="SWE"
+                                    ApprovalCode="314184"/>
+                        </PaymentAcquirerData>
+                    </PaymentResult>
+                </TransactionInterchange>
+            </PaymentCard>
+        </Tenders>
+    </SaleTransaction>
+    <ClosingNote>
+        <MessageArea>
+            <TextLine Variant="Heading">SPARA KVITTOT</TextLine>
+            <LineBreak/>
+            <TextLine Variant="Heading">Välkommen åter</TextLine>
+            <TextLine>TEL 08-718 46 66</TextLine>
+            <TextLine>FAX 08- 718 46 66</TextLine>
+            <LineBreak/>
+            <TextLine>Du betjänades av</TextLine>
+            <TextLine>Dashti</TextLine>
+        </MessageArea>
+    </ClosingNote>
+</Receipt>

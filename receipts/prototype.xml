@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Receipt xmlns="https://www.receipts.se/schema"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://www.receipts.se/schema ../schemas/receipt.xsd"
+         Version="1.0"
+         Language="sv-SE"
+         Country="SE">
+    <MerchantData OrganizationNumber="556677-8899">
+        <MerchantName>Store AB</MerchantName>                                                           <!-- 0..1 -->
+        <Branding>                                                                                      <!-- 0..1 -->
+            <MerchantLogo Src="https://cdn.example/logo.png"/>                                          <!-- 0..1 -->
+            <MessageArea>                                                                               <!-- 0..1 -->
+                <TextLine Variant="Body" Style="Normal">ÖPPET FÖR DIG!</TextLine>                       <!-- Variant: Body* | Heading -->
+                <TextLine>ALLA DAGAR
+                </TextLine>                                                                             <!-- Style: Normal* | Bold   1..10 -->
+                <TextLine>9-20</TextLine>
+                <LineBreak/>
+            </MessageArea>
+        </Branding>
+        <Location>                                                                                      <!-- 0..1 -->
+            <DisplayName>Saltsjöbaden</DisplayName>                                                     <!-- 0..1 -->
+            <Address StreetName="Ektorpsvägen" StreetNumber="4" PostalCode="131 47" City="Nacka"/>      <!-- 0..1 -->
+        </Location>
+        <Contact>                                                                                       <!-- 0..1 -->
+            <Phone Uri="tel:+4618100510">018-10 05 10</Phone>                                           <!-- 0..1 -->
+            <Fax Uri="fax:+4618123456">018-12 34 56</Fax>
+            <Email Uri="mailto:info@example.com">info@example.com</Email>
+            <Web Uri="https://example.com">Visit us at www.example.com</Web>
+        </Contact>
+    </MerchantData>
+    <SaleTransaction Currency="SEK" TimeStamp="2025-08-29T12:34:56+02:00">
+        <SaleIdentificationData>
+            <POSData TerminalID="003" StoreID="169" RunNumber="16169" TransactionNumber="601559"/>
+            <Operator CashierID="121" CashierAlias="Andreas"/>
+            <TaxAgencyData ControlUnitID="RIHTT100710002986"/>
+        </SaleIdentificationData>
+        <Order>
+            <Items>
+                <Item LineNo="1">
+                    <Description>Äpple Pink Lady</Description>
+                    <Pricing>
+                        <UnitPrice>29.90</UnitPrice>
+                        <WeightQuantity>0.350</WeightQuantity>
+                    </Pricing>
+                    <Discounts>
+                        <Discount Type="Bundle" Basis="Item" Description="Pink Lady 20kr/kg">
+                            <Value Mode="Amount">5.85</Value>
+                        </Discount>
+                    </Discounts>
+                    <LineTotals>
+                        <BaseAmount>11.85</BaseAmount>
+                        <DiscountAmount>4.85</DiscountAmount>
+                        <GrossAmount>7.00</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>0.75</TaxAmount>
+                            <NetAmount>6.25</NetAmount>
+                            <GrossAmount>7.00</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="3" Type="Deposit" RelatedLineNo="2">
+                    <Description>+ PANT</Description>
+                    <Pricing>
+                        <UnitPrice>1.00</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>1.00</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>0.12</TaxAmount>
+                            <NetAmount>0.88</NetAmount>
+                            <GrossAmount>1.00</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+            </Items>
+            <Discounts>
+                <Discount Type="Bundle" Basis="Order" Description="Ölkorv 3 för 39:-">
+                    <Value Mode="Amount">5.85</Value>
+                    <AppliesTo>
+                        <ItemReference LineNo="1"/>
+                    </AppliesTo>
+                </Discount>
+            </Discounts>
+            <TransactionSummary>
+                <ItemCount>17</ItemCount>
+                <Totals>
+                    <BaseAmount>352.87</BaseAmount>
+                    <DiscountAmount>2.87</DiscountAmount>
+                    <GrossAmount>350.00</GrossAmount>
+                </Totals>
+                <VATSummary>
+                    <VAT Rate="6.00">
+                        <TaxAmount>37.81</TaxAmount>
+                        <NetAmount>315.06</NetAmount>
+                        <GrossAmount>352.87</GrossAmount>
+                    </VAT>
+                </VATSummary>
+            </TransactionSummary>
+        </Order>
+        <Tenders>
+            <PaymentCash>
+                <RoundingAdjustment>0.13</RoundingAdjustment>
+                <AmountDue>353.00</AmountDue>
+                <CashReceived>500.00</CashReceived>
+                <ChangeGiven>147.00</ChangeGiven>
+            </PaymentCash>
+            <PaymentCard>
+                <TransactionInterchange>                                                                                            <!-- 0..1 | Card or Cash -->
+                    <POIData>
+                        <POITransactionID TransactionID="B5FD3000000009913" TimeStamp="2023-08-24T17:03:37+02:00"/>
+                    </POIData>
+                    <PaymentResult PaymentType="Normal">                                                                            <!-- EntryMode: Normal | Refund -->
+                        <PaymentInstrumentData PaymentInstrumentType="Card">                                                        <!-- EntryMode: Card | Mobile -->
+                            <CardData PaymentBrand="Debit Mastercard" MaskedPAN="************9659" EntryMode="Contactless">         <!-- EntryMode: ICC | Contactless | Magstripe -->
+                                <CVMResult CVMType="PIN"/>                                                                          <!-- Cardholder Verification Method | CMVType: PIN | Signature | None -->
+                                <EMVData AID="A0000000041010" TVR="0000008001" TSI="0000"/>                                         <!-- TVR: 10 hex digits -->
+                            </CardData>                                                                                             <!-- TSI: 4 hex digits -->
+                        </PaymentInstrumentData>
+                        <AmountData AuthorizedAmount="108.80" CashBackAmount="0.00"/>
+                        <PaymentAcquirerData MerchantID="715219" RRN="612031901527" POIUnitID="3" AcquirerPOIID="61203190">         <!-- RRN: 12 digits | AcquirerPOIID: 8 digits -->
+                            <PaymentAuthorisationData
+                                    TransactionSource="Ca"
+                                    AuthorisationChannel="1"
+                                    AuthorisationResponder="7"
+                                    TransactionType="000"
+                                    FinancialInstitution="SWE"
+                                    ApprovalCode="831334"
+                                    ARC="00"/>
+                        </PaymentAcquirerData>
+                    </PaymentResult>
+                </TransactionInterchange>
+                <OutputContent OutputFormat="Text">
+                    <OutputText>BELOPP GODKÄNT AV KUND&#10;SPARA KVITTOT, KUNDENS EXEMPLAR</OutputText>
+                </OutputContent>
+            </PaymentCard>
+        </Tenders>
+    </SaleTransaction>
+    <ClosingNote>
+        <MessageArea>                                                                                                           <!-- 0..1 -->
+            <TextLine>Öppettider:</TextLine>                                                                                    <!-- 1..10 -->
+            <TextLine>Mån-Lör 8-21</TextLine>
+            <TextLine>Sön 8-20</TextLine>
+            <TextLine>Tack och välkommen åter!</TextLine>
+            <LineBreak/>                                                                                                        <!-- 0..10 -->
+            <TextLine>** THANK YOU FOR YOUR COST</TextLine>
+            <TextLine Variant="Heading">*** ORIGINAL</TextLine>
+        </MessageArea>
+    </ClosingNote>
+</Receipt>

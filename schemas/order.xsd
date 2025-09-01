@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://www.receipts.se/schema"
+           xmlns:tns="https://www.receipts.se/schema"
+           elementFormDefault="qualified">
+
+    <xs:include schemaLocation="common.xsd"/>
+
+    <xs:group name="UnitOfMeasureChoice">
+        <xs:choice>
+            <xs:element name="CountQuantity" type="tns:PositiveIntegerType"/>
+            <xs:element name="WeightQuantity" type="tns:WeightType"/>
+        </xs:choice>
+    </xs:group>
+
+    <xs:simpleType name="ModeEnum">
+        <xs:restriction base="tns:LabelType">
+            <xs:enumeration value="Amount"/>
+            <xs:enumeration value="Percent"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="DiscountValueType">
+        <xs:simpleContent>
+            <xs:extension base="tns:PositiveAmountType">
+                <xs:attribute name="Mode" type="tns:ModeEnum" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:element name="Discount">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Value" type="tns:DiscountValueType"/>
+                <xs:element name="AppliesTo" type="tns:AppliesToType" minOccurs="0" maxOccurs="999"/>
+            </xs:sequence>
+            <xs:attribute name="Type" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="tns:LabelType">
+                        <xs:enumeration value="Bundle"/>
+                        <xs:enumeration value="Period"/>
+                        <xs:enumeration value="Loyalty"/>
+                        <xs:enumeration value="Coupon"/>
+                        <xs:enumeration value="Promo"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="Basis" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="tns:LabelType">
+                        <xs:enumeration value="Item"/>
+                        <xs:enumeration value="Order"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="Description" type="tns:LabelType" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="AppliesToType">
+        <xs:sequence>
+            <xs:element name="ItemReference" maxOccurs="999">
+                <xs:complexType>
+                    <xs:attribute name="LineNo" type="tns:PositiveIntegerType" use="required"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="Discounts">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:Discount" maxOccurs="999"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ItemType">
+        <xs:sequence>
+            <xs:element name="Description" type="tns:LabelType"/>
+            <xs:element name="Pricing">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="UnitPrice" type="tns:AmountType"/>
+                        <xs:group ref="tns:UnitOfMeasureChoice"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element ref="tns:Discounts" minOccurs="0"/>
+            <xs:element name="LineTotals">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="BaseAmount" type="tns:AmountType" minOccurs="0"/>
+                        <xs:element name="DiscountAmount" type="tns:PositiveAmountType" minOccurs="0"/>
+                        <xs:element name="GrossAmount" type="tns:AmountType"/>
+                        <xs:element ref="tns:VAT"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="LineNo" type="tns:PositiveIntegerType" use="required"/>
+        <xs:attribute name="Type" default="Sale">
+            <xs:simpleType>
+                <xs:restriction base="tns:LabelType">
+                    <xs:enumeration value="Sale"/>
+                    <xs:enumeration value="Deposit"/>
+                    <xs:enumeration value="Return"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="RelatedLineNo" type="tns:PositiveIntegerType"/>
+    </xs:complexType>
+
+    <xs:element name="VAT">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="TaxAmount" type="tns:AmountType"/>
+                <xs:element name="NetAmount" type="tns:AmountType"/>
+                <xs:element name="GrossAmount" type="tns:AmountType"/>
+            </xs:sequence>
+            <xs:attribute name="Rate" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="tns:PositiveAmountType">
+                        <xs:enumeration value="6.00"/>
+                        <xs:enumeration value="12.00"/>
+                        <xs:enumeration value="25.00"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="TotalsType">
+        <xs:sequence>
+            <xs:element name="BaseAmount" type="tns:AmountType" minOccurs="0"/>
+            <xs:element name="DiscountAmount" type="tns:AmountType" minOccurs="0"/>
+            <xs:element name="GrossAmount" type="tns:AmountType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TransactionSummaryType">
+        <xs:sequence>
+            <xs:element name="ItemCount" type="tns:PositiveIntegerType"/>
+            <xs:element name="Totals" type="tns:TotalsType"/>
+            <xs:element name="VATSummary">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="tns:VAT" maxOccurs="3"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

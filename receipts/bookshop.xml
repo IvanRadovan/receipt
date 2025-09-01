@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Receipt xmlns="https://www.receipts.se/schema"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://www.receipts.se/schema ../schemas/receipt.xsd"
+         Version="1.0"
+         Language="sv-SE"
+         Country="SE">
+    <MerchantData OrganizationNumber="556516-2418">
+        <Branding>
+            <MerchantLogo Src="https://www.bookshop.se/logo.png"/>
+        </Branding>
+        <Location>
+            <Address StreetName="SVARTBACKSGATAN" StreetNumber="19" City="UPPSALA"/>
+        </Location>
+        <Contact>
+            <Phone Uri="tel:+4618100510">Phone 018-10 05 10</Phone>
+            <Email Uri="mailto:info@bookshop.se">Email info@bookshop.se</Email>
+            <Web Uri="https://www.bookshop.se">Visit us at www.bookshop.se</Web>
+        </Contact>
+    </MerchantData>
+    <SaleTransaction Currency="SEK">
+        <SaleIdentificationData>
+            <POSData TerminalID="0000000000000001" RunNumber="000000160882"/>
+        </SaleIdentificationData>
+        <Order>
+            <Items>
+                <Item LineNo="1">
+                    <Description>Books/Böcker T3</Description>
+                    <Pricing>
+                        <UnitPrice>430.00</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>430.00</GrossAmount>
+                        <VAT Rate="6.00">
+                            <TaxAmount>24.34</TaxAmount>
+                            <NetAmount>405.66</NetAmount>
+                            <GrossAmount>430.00</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+            </Items>
+            <TransactionSummary>
+                <ItemCount>1</ItemCount>
+                <Totals>
+                    <GrossAmount>430.00</GrossAmount>
+                </Totals>
+                <VATSummary>
+                    <VAT Rate="6.00">
+                        <TaxAmount>24.34</TaxAmount>
+                        <NetAmount>405.66</NetAmount>
+                        <GrossAmount>430.00</GrossAmount>
+                    </VAT>
+                </VATSummary>
+            </TransactionSummary>
+        </Order>
+        <Tenders>
+            <PaymentCard>
+                <TransactionInterchange>
+                    <POIData>
+                        <POITransactionID TransactionID="B5FD3000000009913" TimeStamp="2018-09-17T17:09:00+02:00"/>
+                    </POIData>
+                    <PaymentResult PaymentType="Normal">
+                        <PaymentInstrumentData PaymentInstrumentType="Card"/>
+                        <AmountData AuthorizedAmount="108.80"/>
+                        <PaymentAcquirerData POIUnitID="1">
+                            <PaymentAuthorisationData ApprovalCode="181867" ARC="00"/>
+                        </PaymentAcquirerData>
+                    </PaymentResult>
+                </TransactionInterchange>
+            </PaymentCard>
+        </Tenders>
+    </SaleTransaction>
+    <ClosingNote>
+        <MessageArea>
+            <TextLine>Öppet köp 14 dagar mot kvitto</TextLine>
+            <TextLine>(gäller ej specialbeställningar)</TextLine>
+            <TextLine>The Uppsala English Bookshop</TextLine>
+            <LineBreak/>
+            <TextLine>** THANK YOU FOR YOUR CUSTOM</TextLine>
+            <TextLine Variant="Heading">*** ORIGINAL</TextLine>
+        </MessageArea>
+    </ClosingNote>
+</Receipt>

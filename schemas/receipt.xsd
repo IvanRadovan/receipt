@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+           targetNamespace="https://www.receipts.se/schema"
+           xmlns:tns="https://www.receipts.se/schema"
+           elementFormDefault="qualified"
+           vc:minVersion="1.0"
+           vc:maxVersion="1.1">
+
+    <xs:include schemaLocation="common.xsd"/>
+    <xs:include schemaLocation="merchant.xsd"/>
+    <xs:include schemaLocation="sale-identification.xsd"/>
+    <xs:include schemaLocation="payment.xsd"/>
+    <xs:include schemaLocation="order.xsd"/>
+
+    <xs:element name="Receipt">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="MerchantData">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="MerchantName" type="tns:LabelType" minOccurs="0"/>
+                            <xs:element name="Branding" type="tns:BrandingType" minOccurs="0"/>
+                            <xs:element name="Location" type="tns:LocationType" minOccurs="0"/>
+                            <xs:element name="Contact" type="tns:ContactType" minOccurs="0"/>
+                        </xs:sequence>
+                        <xs:attribute name="OrganizationNumber" type="tns:OrganizationNumberType" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="SaleTransaction">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="SaleIdentificationData">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="POSData" type="tns:POSDataType"/>
+                                        <xs:element name="Operator" type="tns:OperatorType" minOccurs="0"/>
+                                        <xs:element name="TaxAgencyData" type="tns:TaxAgencyDataType" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Order">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Items">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Item" type="tns:ItemType" maxOccurs="999"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element ref="tns:Discounts" minOccurs="0"/>
+                                        <xs:element name="TransactionSummary" type="tns:TransactionSummaryType" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Tenders">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:group ref="tns:PaymentChoice"/>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Currency" type="tns:CurrencyEnum" use="required" />
+                        <xs:attribute name="TimeStamp" type="xs:dateTime"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="ClosingNote">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="tns:MessageArea"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Version" type="tns:LabelType" use="required"/>
+            <xs:attribute name="Language" type="xs:language" use="required"/>
+            <xs:attribute name="Country" type="tns:LabelType" use="required"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

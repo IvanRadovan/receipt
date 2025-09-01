@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Receipt xmlns="https://www.receipts.se/schema"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://www.receipts.se/schema ../schemas/receipt.xsd"
+         Version="1.0"
+         Language="sv-SE"
+         Country="SE">
+    <MerchantData OrganizationNumber="556163-2232">
+        <MerchantName>Willys Hemma</MerchantName>
+        <Branding>
+            <MerchantLogo Src="https://www.willys.se/logo.png"/>
+        </Branding>
+        <Location>
+            <DisplayName>Saltsjöbaden</DisplayName>
+        </Location>
+        <Contact>
+            <Phone Uri="tel:+4687480830">08-7480830</Phone>
+        </Contact>
+    </MerchantData>
+    <SaleTransaction Currency="SEK" TimeStamp="2018-10-04T12:00:00+02:00">
+        <SaleIdentificationData>
+            <POSData TerminalID="4" StoreID="169"/>
+            <Operator CashierID="41" CashierAlias="Sofia"/>
+        </SaleIdentificationData>
+        <Order>
+            <Items>
+                <Item LineNo="1">
+                    <Description>VIKA BRÖD 540G</Description>
+                    <Pricing>
+                        <UnitPrice>22.90</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>22.90</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>2.45</TaxAmount>
+                            <NetAmount>20.45</NetAmount>
+                            <GrossAmount>22.90</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="2">
+                    <Description>T0BLERONE 50G</Description>
+                    <Pricing>
+                        <UnitPrice>19.90</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>19.90</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>2.13</TaxAmount>
+                            <NetAmount>17.77</NetAmount>
+                            <GrossAmount>19.90</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="3">
+                    <Description>TIP TOP MINI</Description>
+                    <Pricing>
+                        <UnitPrice>25.00</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>25.00</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>2.68</TaxAmount>
+                            <NetAmount>22.32</NetAmount>
+                            <GrossAmount>25.00</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="4">
+                    <Description>SMÅBLADSMIX EKO</Description>
+                    <Pricing>
+                        <UnitPrice>15.90</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>15.90</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>1.70</TaxAmount>
+                            <NetAmount>14.20</NetAmount>
+                            <GrossAmount>15.90</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="5">
+                    <Description>PLASTKASSE VIT</Description>
+                    <Pricing>
+                        <UnitPrice>2.00</UnitPrice>
+                        <CountQuantity>2</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>4.00</GrossAmount>
+                        <VAT Rate="25.00">
+                            <TaxAmount>0.80</TaxAmount>
+                            <NetAmount>3.20</NetAmount>
+                            <GrossAmount>4.00</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="6">
+                    <Description>KVISTTOMATER</Description>
+                    <Pricing>
+                        <UnitPrice>42.90</UnitPrice>
+                        <WeightQuantity>0.570</WeightQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>24.45</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>2.62</TaxAmount>
+                            <NetAmount>21.83</NetAmount>
+                            <GrossAmount>24.45</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="7">
+                    <Description>AVOKADO</Description>
+                    <Pricing>
+                        <UnitPrice>13.90</UnitPrice>
+                        <CountQuantity>2</CountQuantity>
+                    </Pricing>
+                    <Discounts>
+                        <Discount Type="Bundle" Basis="Item" Description="2 * Rabatt: AVOKADO">
+                            <Value Mode="Amount">6.00</Value>
+                        </Discount>
+                    </Discounts>
+                    <LineTotals>
+                        <BaseAmount>27.80</BaseAmount>
+                        <DiscountAmount>6.00</DiscountAmount>
+                        <GrossAmount>21.80</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>2.34</TaxAmount>
+                            <NetAmount>19.46</NetAmount>
+                            <GrossAmount>21.80</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="8">
+                    <Description>LÖK RÖD</Description>
+                    <Pricing>
+                        <UnitPrice>17.90</UnitPrice>
+                        <WeightQuantity>0.350</WeightQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>6.27</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>0.67</TaxAmount>
+                            <NetAmount>5.60</NetAmount>
+                            <GrossAmount>6.27</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="9">
+                    <Description>POTATIS FAST</Description>
+                    <Pricing>
+                        <UnitPrice>11.90</UnitPrice>
+                        <WeightQuantity>1.475</WeightQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>17.55</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>1.88</TaxAmount>
+                            <NetAmount>15.67</NetAmount>
+                            <GrossAmount>17.55</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="10">
+                    <Description>GRÄDDFIL 3DL EKO</Description>
+                    <Pricing>
+                        <UnitPrice>12.80</UnitPrice>
+                        <CountQuantity>2</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>25.60</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>2.74</TaxAmount>
+                            <NetAmount>22.86</NetAmount>
+                            <GrossAmount>25.60</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="11">
+                    <Description>GREVÉ 12MÅN 28%</Description>
+                    <Pricing>
+                        <UnitPrice>124.00</UnitPrice>
+                        <WeightQuantity>0.647</WeightQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>80.23</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>8.60</TaxAmount>
+                            <NetAmount>71.63</NetAmount>
+                            <GrossAmount>80.23</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="12">
+                    <Description>KALLES KAVIAR 300G</Description>
+                    <Pricing>
+                        <UnitPrice>26.50</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>26.50</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>2.84</TaxAmount>
+                            <NetAmount>23.66</NetAmount>
+                            <GrossAmount>26.50</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="13">
+                    <Description>KOTLETT CA450G</Description>
+                    <Pricing>
+                        <UnitPrice>105.00</UnitPrice>
+                        <WeightQuantity>0.494</WeightQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>51.87</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>5.56</TaxAmount>
+                            <NetAmount>46.31</NetAmount>
+                            <GrossAmount>51.87</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+                <Item LineNo="14">
+                    <Description>EXTRA STRONG MINT</Description>
+                    <Pricing>
+                        <UnitPrice>14.90</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>14.90</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>1.60</TaxAmount>
+                            <NetAmount>13.30</NetAmount>
+                            <GrossAmount>14.90</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
+            </Items>
+            <TransactionSummary>
+                <ItemCount>17</ItemCount>
+                <Totals>
+                    <BaseAmount>362.87</BaseAmount>
+                    <DiscountAmount>6.00</DiscountAmount>
+                    <GrossAmount>356.87</GrossAmount>
+                </Totals>
+                <VATSummary>
+                    <VAT Rate="12.00">
+                        <TaxAmount>37.81</TaxAmount>
+                        <NetAmount>315.06</NetAmount>
+                        <GrossAmount>352.87</GrossAmount>
+                    </VAT>
+                    <VAT Rate="25.00">
+                        <TaxAmount>0.80</TaxAmount>
+                        <NetAmount>3.20</NetAmount>
+                        <GrossAmount>4.00</GrossAmount>
+                    </VAT>
+                </VATSummary>
+            </TransactionSummary>
+        </Order>
+        <Tenders>
+            <PaymentCard>
+                <TransactionInterchange>
+                    <POIData>
+                        <POITransactionID TimeStamp="2018-10-04T12:05:10+02:00"/>
+                    </POIData>
+                    <PaymentResult PaymentType="Normal">
+                        <PaymentInstrumentData PaymentInstrumentType="Card">
+                            <CardData PaymentBrand="Debit Mastercard" MaskedPAN="************3777" EntryMode="Contactless">
+                                <CVMResult CVMType="PIN"/>
+                                <EMVData AID="A0000000041010" TVR="0000048000" TSI="E800"/>
+                            </CardData>
+                        </PaymentInstrumentData>
+                        <AmountData AuthorizedAmount="108.80"/>
+                        <PaymentAcquirerData MerchantID="2293561" RRN="000032595047" POIUnitID="4" AcquirerPOIID="00003259">
+                            <PaymentAuthorisationData
+                                    TransactionSource="KA"
+                                    AuthorisationChannel="1"
+                                    AuthorisationResponder="6"
+                                    TransactionType="000"
+                                    FinancialInstitution="SWE"
+                                    ApprovalCode="115520"/>
+                        </PaymentAcquirerData>
+                    </PaymentResult>
+                </TransactionInterchange>
+            </PaymentCard>
+        </Tenders>
+    </SaleTransaction>
+    <ClosingNote>
+        <MessageArea>
+            <TextLine Variant="Heading">SPARA KVITTOT</TextLine>
+            <LineBreak/>
+            <TextLine Variant="Heading">Välkommen åter!</TextLine>
+            <TextLine>Mån-Lör 8-21 Sön 9-21</TextLine>
+            <TextLine>Tel: 08-7480830</TextLine>
+            <LineBreak/>
+            <TextLine>Du betjänades av</TextLine>
+            <TextLine>41 Sofia</TextLine>
+        </MessageArea>
+    </ClosingNote>
+</Receipt>
