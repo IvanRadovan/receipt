@@ -4,7 +4,7 @@
            xmlns:tns="https://www.receipts.se/schema"
            elementFormDefault="qualified">
 
-    <xs:include schemaLocation="common.xsd"/>
+    <xs:include schemaLocation="./common.xsd"/>
 
     <xs:simpleType name="CurrencyEnum">
         <xs:restriction base="tns:LabelType">

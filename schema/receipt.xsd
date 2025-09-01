@@ -7,11 +7,11 @@
            vc:minVersion="1.0"
            vc:maxVersion="1.1">
 
-    <xs:include schemaLocation="common.xsd"/>
-    <xs:include schemaLocation="merchant.xsd"/>
-    <xs:include schemaLocation="sale-identification.xsd"/>
-    <xs:include schemaLocation="payment.xsd"/>
-    <xs:include schemaLocation="order.xsd"/>
+    <xs:include schemaLocation="./common.xsd"/>
+    <xs:include schemaLocation="./merchant.xsd"/>
+    <xs:include schemaLocation="./sale-identification.xsd"/>
+    <xs:include schemaLocation="./payment.xsd"/>
+    <xs:include schemaLocation="./order.xsd"/>
 
     <xs:element name="Receipt">
         <xs:complexType>
@@ -50,7 +50,7 @@
                                             </xs:complexType>
                                         </xs:element>
                                         <xs:element ref="tns:Discounts" minOccurs="0"/>
-                                        <xs:element name="TransactionSummary" type="tns:TransactionSummaryType" />
+                                        <xs:element name="TransactionSummary" type="tns:TransactionSummaryType"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
@@ -62,7 +62,7 @@
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
-                        <xs:attribute name="Currency" type="tns:CurrencyEnum" use="required" />
+                        <xs:attribute name="Currency" type="tns:CurrencyEnum" use="required"/>
                         <xs:attribute name="TimeStamp" type="xs:dateTime"/>
                     </xs:complexType>
                 </xs:element>
@@ -79,4 +79,5 @@
             <xs:attribute name="Country" type="tns:LabelType" use="required"/>
         </xs:complexType>
     </xs:element>
+
 </xs:schema>

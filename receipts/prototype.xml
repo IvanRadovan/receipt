@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Receipt xmlns="https://www.receipts.se/schema"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://www.receipts.se/schema ../schemas/receipt.xsd"
+         xsi:schemaLocation="https://www.receipts.se/schema ../schema/receipt.xsd"
          Version="1.0"
          Language="sv-SE"
          Country="SE">
@@ -58,7 +58,7 @@
                         </VAT>
                     </LineTotals>
                 </Item>
-                <Item LineNo="3" Type="Deposit" RelatedLineNo="2">
+                <Item LineNo="2" Type="Deposit" RelatedLineNo="2">
                     <Description>+ PANT</Description>
                     <Pricing>
                         <UnitPrice>1.00</UnitPrice>
@@ -73,6 +73,21 @@
                         </VAT>
                     </LineTotals>
                 </Item>
+                <Item LineNo="3" Type="Return">
+                    <Description>RETURPANT</Description>
+                    <Pricing>
+                        <UnitPrice>-126.00</UnitPrice>
+                        <CountQuantity>1</CountQuantity>
+                    </Pricing>
+                    <LineTotals>
+                        <GrossAmount>-126.00</GrossAmount>
+                        <VAT Rate="12.00">
+                            <TaxAmount>-13.50</TaxAmount>
+                            <NetAmount>-123.50</NetAmount>
+                            <GrossAmount>-126.00</GrossAmount>
+                        </VAT>
+                    </LineTotals>
+                </Item>
             </Items>
             <Discounts>
                 <Discount Type="Bundle" Basis="Order" Description="Ölkorv 3 för 39:-">
@@ -83,7 +98,7 @@
                 </Discount>
             </Discounts>
             <TransactionSummary>
-                <ItemCount>17</ItemCount>
+                <ItemCount>3</ItemCount>
                 <Totals>
                     <BaseAmount>352.87</BaseAmount>
                     <DiscountAmount>2.87</DiscountAmount>
